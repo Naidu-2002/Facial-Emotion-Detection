@@ -1,47 +1,81 @@
 # Facial Emotion Recognition using ResNet-50
 
-This project implements an emotion recognition system using facial images. It extracts facial features and classifies emotions using a fine-tuned ResNet-50 model trained on six categories: anger, disgust, fear, happiness, pain, and sadness.
+This project implements a deep learning-based facial emotion recognition system using a fine-tuned ResNet-50 model. It classifies facial expressions into six emotion categories: **anger**, **disgust**, **fear**, **happiness**, **pain**, and **sadness**. Designed with real-time applications in mind, the system includes both a Flask backend and a simple HTML/JS frontend for end-to-end deployment.
 
-## Table of Contents
-1. [Installation](#installation)
-2. [Dependencies](#dependencies)
-3. [How to Use](#how-to-use)
-4. [File Structure](#file-structure)
-5. [Model Architecture](#model-architecture)
-6. [Results](#results)
+## 🔍 Overview
 
-## Installation
+Facial emotion detection enhances human-computer interaction by recognizing emotions from facial cues. This system uses **transfer learning** with pre-trained ImageNet weights on a modified ResNet-50, retrained specifically for emotion classification.
 
-To run this project, clone the repository and install the dependencies listed below.
+## 🧠 Model Architecture
 
-```bash
-git clone https://github.com/your-username/facial-emotion-recognition.git
-cd facial-emotion-recognition
+- **Base Model:** ResNet-50 with ImageNet pre-trained weights
+- **Modified Output:** Final dense layer changed to output 6 emotion classes
+- **Dropout Layer:** Added to reduce overfitting
+- **Activation Function:** Softmax for multi-class classification
 
-Sure! Here's **Section 4: Dependencies** in plain text format (no markdown):
+## 🗂 Dataset
+
+- Images categorized into six emotions
+- Source: [Kaggle - Sentiment Images Classifier](https://www.kaggle.com/datasets/yousefmohamed20/sentiment-images-classifier)
+- Preprocessing: Resizing to 224×224, normalization (ImageNet stats), data augmentation (cropping, rotation, color jitter)
+
+## 🏋️‍♀️ Training Details
+
+- **Loss Function:** CrossEntropyLoss
+- **Optimizer:** Adam
+- **Scheduler:** ReduceLROnPlateau
+- **Validation Accuracy:** 72%
+- **Test Accuracy:** 74%
+
+## 🖥 Application Flow
+
+1. **User uploads an image** via the web interface.
+2. **Image is preprocessed** (resized, normalized).
+3. **Model predicts emotion** from the facial expression.
+4. **Output is displayed** on the frontend.
+
+## 🧪 Backend (Flask)
+
+- Endpoint: `/predict`
+- Accepts image uploads via POST
+- Returns predicted emotion as JSON
+
+## 🌐 Frontend (HTML/JS)
+
+- Simple form to upload image
+- Button to trigger prediction
+- Displays predicted emotion
+
+## 📈 Results
+
+- Consistent classification across all six emotions
+- Visual outputs show real-time predictions
+- Ideal for applications in healthcare, surveillance, education, and AI-based user interfaces
+
+## 💡 Key Applications
+
+- **Healthcare:** Monitor emotional well-being
+- **Education:** Gauge student engagement
+- **Customer Service:** Enhance chatbot interaction
+- **Gaming:** Enable emotion-adaptive gameplay
+
+## ⚠️ Challenges
+
+- Class imbalance in dataset
+- Generalization to varied lighting and faces
+- Limited dataset diversity affects accuracy
+
+## 🚀 Future Scope
+
+- Multimodal emotion recognition (combine voice/text)
+- Edge deployment for low-resource environments
+- Expanded dataset for better generalization
+
+## 📚 References
+
+- [ResNet Overview](https://wandb.ai/mostafaibrahim17/ml-articles/reports/The-Basics-of-ResNet50---Vmlldzo2NDkwNDE2)
+- [Dataset Source](https://www.kaggle.com/datasets/yousefmohamed20/sentiment-images-classifier)
 
 ---
 
-### Dependencies
-
-This project requires the following Python libraries:
-
-- tensorflow (for ResNet-50 model)  
-- opencv-python (for image processing)  
-- numpy (for numerical operations)  
-- flask (for creating the backend API)  
-- Pillow (for image handling)  
-
-You can install these dependencies by running:
-
-```bash
-pip install -r requirements.txt
-```
-
-Alternatively, you can install them individually using:
-
-```bash
-pip install tensorflow opencv-python numpy flask Pillow
-```
-
----
+Feel free to contribute or adapt this project for your own use cases.
