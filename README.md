@@ -22,7 +22,6 @@ Here you go — starting **from the Dependencies section**, written in the **exa
 
 ---
 
-```markdown
 ### Dependencies
 
 This project requires the following Python libraries:
