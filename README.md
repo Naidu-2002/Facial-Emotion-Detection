@@ -34,15 +34,13 @@ This project requires the following Python libraries:
 
 You can install these dependencies by running:
 
-```bash
 pip install -r requirements.txt
-```
+
 
 Alternatively, you can install them individually using:
 
-```bash
 pip install tensorflow opencv-python numpy flask Pillow
-```
+
 
 ## How to Use
 
